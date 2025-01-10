@@ -19,4 +19,6 @@ Use this as a starting point to complete the WDD 330 team activity: the SleepOut
 - `npm run lint` to run ESLint against your code to find errors.
 - `npm run format` to run Prettier to automatically format your code.
 
+## SleepOutside
+
 https://app.netlify.com/sites/effervescent-cucurucho-213981/overview
