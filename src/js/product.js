@@ -29,7 +29,9 @@ async function addToCartHandler(e) {
   const product = await dataSource.findProductById(e.target.dataset.id);
   const productId = getParams('product');
 
-  console.log(await dataSource.findProductById(productId));
+  product = await dataSource.findProductById(productId);
+
+  console.log(product);
 
   addProductToCart(product);
 
