@@ -31,7 +31,7 @@ async function addToCartHandler(e) {
   addProductToCart(product);
 
   const productId = getParams('product');
-  const outputURLParams = await dataSource.findProductById(productId);
+  const outputURLParams = product.findProductById(productId);
   console.log(outputURLParams);
 
 }
