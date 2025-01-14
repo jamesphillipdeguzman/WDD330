@@ -3,6 +3,10 @@ import ProductData from "./ProductData.mjs";
 
 const dataSource = new ProductData("tents");
 
+console.log(dataSource.findProductById(productId));
+
+const productId = getParams('product');
+
 function addProductToCart(product) {
   // Check if there's an existing cart
   const cart = getLocalStorage("cart") || []; // Get existing cart or initialize as an empty array
