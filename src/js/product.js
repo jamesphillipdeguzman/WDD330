@@ -26,10 +26,9 @@ function addProductToCart(product) {
 
 // add to cart button event handler
 async function addToCartHandler(e) {
-  const product = await dataSource.findProductById(e.target.dataset.id);
+  // const product = await dataSource.findProductById(e.target.dataset.id);
   const productId = getParams('product');
-
-  product = await dataSource.findProductById(productId);
+  const product = await dataSource.findProductById(productId);
 
   console.log(product);
 
