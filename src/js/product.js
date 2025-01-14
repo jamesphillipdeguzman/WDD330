@@ -23,15 +23,16 @@ function addProductToCart(product) {
   // Update the contents of the cart
   setLocalStorage("cart", cart);
 }
+
 // add to cart button event handler
 async function addToCartHandler(e) {
   const product = await dataSource.findProductById(e.target.dataset.id);
+
   addProductToCart(product);
 }
 
-console.log(dataSource.findProductById(productId));
-
 const productId = getParams('product');
+console.log(dataSource.findProductById(productId));
 
 // add listener to Add to Cart button
 document
