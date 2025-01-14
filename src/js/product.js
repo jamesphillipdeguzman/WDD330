@@ -16,7 +16,6 @@ function addProductToCart(product) {
   else {
     cart.push(product);
     // console.log(cart);
-
   }
 
   // Update the contents of the cart
