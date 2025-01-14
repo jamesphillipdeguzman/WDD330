@@ -31,8 +31,15 @@ async function addToCartHandler(e) {
   addProductToCart(product);
 }
 
-const productId = getParams('product');
-console.log(dataSource.findProductById(productId));
+async function getURLParams() {
+  const productId = getParams('product');
+  const outputURLParams = await dataSource.findProductById(productId);
+  console.log(outputURLParams);
+
+}
+
+getURLParams();
+
 
 // add listener to Add to Cart button
 document
