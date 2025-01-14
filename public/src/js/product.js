@@ -15,7 +15,8 @@ function addProductToCart(product) {
   // If the cart is NOT empty, keep pushing the product to the cart array and display it to the console...
   else {
     cart.push(product);
-    console.log(cart);
+    // console.log(cart);
+
   }
 
   // Update the contents of the cart
