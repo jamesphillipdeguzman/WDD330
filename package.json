@@ -21,11 +21,6 @@
     "prettier": "^3.2.5",
     "vite": "^5.4.7"
   },
-  "babel": {
-    "presets": [
-      "@babel/preset-env"
-    ]
-  },
   "browserslist": [
     "last 3 and_chr versions",
     "last 3 chrome versions",
