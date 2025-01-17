@@ -2,8 +2,6 @@ import { getParams } from "./utils.mjs";
 import ProductData from "./ProductData.mjs";
 import ProductDetails from "./ProductDetails.mjs"; // Corrected the import to match the class name
 
-
-
 function renderProductDetails() {
   // Get the URL parameter and assign it to productId
   const productId = getParams("product");
@@ -15,7 +13,5 @@ function renderProductDetails() {
   const product = new ProductDetails(productId, dataSource);
   product.init();
 }
-
-
 
 document.addEventListener("DOMContentLoaded", renderProductDetails);

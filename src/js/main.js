@@ -1,14 +1,12 @@
-import tents from "../json/tents.json"
+import tents from "../json/tents.json";
 import ProductData from "./ProductData.mjs";
 import { getParams } from "./utils.mjs";
 
 // AI helped with this stripHtmlTags
 function stripHtmlTags(html) {
-  const doc = new DOMParser().parseFromString(html, 'text/html');
+  const doc = new DOMParser().parseFromString(html, "text/html");
   return doc.body.textContent || doc.body.innerText;
 }
-
-
 
 async function showTemplate() {
   const cartTemplate = document.querySelector("#cart-template");
@@ -17,7 +15,7 @@ async function showTemplate() {
   // Get the URL parameter and assign it to productId
   let productId = getParams("product");
 
-  const product = await productData.findProductById(productId)
+  const product = await productData.findProductById(productId);
   console.log(product);
 
   if (product) {
@@ -44,20 +42,11 @@ async function showTemplate() {
     const addToCartBtn = document.querySelector("#addToCart");
     addToCartBtn.setAttribute("data-id", productId);
     cartContainer.appendChild(clone);
-
   } else {
-
     console.log("Product not found!");
   }
 
-
   // clone.querySelector(".cart-title").textContent = `Sleep Outside | ${tents.Name}`;
-
-
-
 }
 
 document.addEventListener("DOMContentLoaded", showTemplate);
-
-
-
