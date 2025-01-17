@@ -18,6 +18,23 @@ export default class ProductData {
   }
   async findProductById(id) {
     const products = await this.getData();
-    return products.find((item) => item.Id === id);
+    const product = products.find((item) => item.Id === id);
+
+    // Help with AI
+    // Check if product exists, then return the product and its brand
+    if (product) {
+      return {
+        product: product,
+        brandId: product.Id ? product.Brand.Id : "Unknown Id",
+        brand: product.Brand,
+        brandName: product.Brand.Name,
+        colors: product.Colors[0].ColorName,
+        image: product.Image,
+
+
+      };
+    } else {
+      return null;  // Return null if product not found
+    }
   }
 }
