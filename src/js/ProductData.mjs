@@ -11,7 +11,7 @@ export default class ProductData {
     this.category = category;
     this.path = `../json/${this.category}.json`;
   }
-  getData() {
+  async getData() {
     return fetch(this.path)
       .then(convertToJson)
       .then((data) => data);
@@ -26,10 +26,14 @@ export default class ProductData {
       return {
         product: product,
         brandId: product.Id ? product.Brand.Id : "Unknown Id",
-        brand: product.Brand,
-        brandName: product.Brand.Name,
+        brand: product.Brand.Name,
+        brandFullName: product.Name,
+        productDesc: product.Brand.Desc,
         colors: product.Colors[0].ColorName,
         image: product.Image,
+        price: product.ListPrice,
+        description: product.DescriptionHtmlSimple,
+        dataId: product.Id,
 
 
       };

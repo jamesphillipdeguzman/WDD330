@@ -2,6 +2,12 @@ import tents from "../json/tents.json"
 import ProductData from "./ProductData.mjs";
 import { getParams } from "./utils.mjs";
 
+// AI helped with this stripHtmlTags
+function stripHtmlTags(html) {
+  const doc = new DOMParser().parseFromString(html, 'text/html');
+  return doc.body.textContent || doc.body.innerText;
+}
+
 
 
 async function showTemplate() {
@@ -17,16 +23,26 @@ async function showTemplate() {
   if (product) {
     const clone = cartTemplate.content.cloneNode(true);
 
-    const brandName = product.brandName;
-    const productDesc = product.brandName;
+    const dataId = product.dataId;
+    const brandName = product.brand;
+    const brandFullName = product.brandFullName;
     const productColor = product.colors;
     const productImage = product.image;
+    const price = product.price;
 
+    // Get the plain text content from 'descriptionHtmlSimple'
+    const descriptionSimple = stripHtmlTags(product.description);
 
     clone.querySelector(".brand-name").textContent = brandName;
-    clone.querySelector(".product-desc").textContent = productDesc;
+    clone.querySelector(".brand-fullname").textContent = brandFullName;
     clone.querySelector(".product__color").textContent = productColor;
     clone.querySelector(".product-img").src = productImage;
+    clone.querySelector(".product-card__price").innerHTML = "$" + price;
+    clone.querySelector(".product__description").innerText = descriptionSimple;
+
+    // const addToCartBtn = clone.querySelector("#addToCart");
+    const addToCartBtn = document.querySelector("#addToCart");
+    addToCartBtn.setAttribute("data-id", productId);
     cartContainer.appendChild(clone);
 
   } else {
