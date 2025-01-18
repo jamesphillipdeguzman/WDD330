@@ -1,4 +1,4 @@
-import tents from "../json/tents.json";
+// import tents from "../json/tents.json";
 import ProductData from "./ProductData.mjs";
 import { getParams } from "./utils.mjs";
 
@@ -16,12 +16,12 @@ async function showTemplate() {
   let productId = getParams("product");
 
   const product = await productData.findProductById(productId);
-  console.log(product);
+  // console.log(product);
 
   if (product) {
     const clone = cartTemplate.content.cloneNode(true);
 
-    const dataId = product.dataId;
+    // const dataId = product.dataId;
     const brandName = product.brand;
     const brandFullName = product.brandFullName;
     const productColor = product.colors;
@@ -43,7 +43,7 @@ async function showTemplate() {
     addToCartBtn.setAttribute("data-id", productId);
     cartContainer.appendChild(clone);
   } else {
-    console.log("Product not found!");
+    // console.log("Product not found!");
   }
 
   // clone.querySelector(".cart-title").textContent = `Sleep Outside | ${tents.Name}`;
