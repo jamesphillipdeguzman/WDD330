@@ -10,6 +10,7 @@ export default class ProductDetails {
     // Initialize the page and add event listeners
     init() {
         // Add listener to "Add to Cart" button
+<<<<<<< HEAD
         document.getElementById("addToCart").addEventListener("click", (e) => this.addToCartHandler(e));
     }
 
@@ -19,6 +20,17 @@ export default class ProductDetails {
         const product = await this.dataSource.findProductById(this.productId);
 
         console.log(product);
+=======
+        document.getElementById("addToCart").addEventListener("click", () => this.addToCartHandler());
+    }
+
+    // Add to cart button event handler
+    async addToCartHandler() {
+        // Find the product by Id
+        const product = await this.dataSource.findProductById(this.productId);
+
+        // console.log(product);
+>>>>>>> jpd--team2
 
         // Add the product to the cart
         this.addProductToCart(product);
@@ -43,7 +55,11 @@ export default class ProductDetails {
         } else {
             // If the cart is NOT empty, keep pushing the product to the cart array and log it to the console
             cart.push(product);
+<<<<<<< HEAD
             console.log(cart);
+=======
+            // console.log(cart);
+>>>>>>> jpd--team2
         }
 
         // Update the contents of the cart in local storage
