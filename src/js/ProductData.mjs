@@ -21,7 +21,7 @@ export default class ProductData {
     const product = products.find((item) => item.Id === id);
 
     // Help with AI
-    // Check if product exists, then return the product and its brand
+    // Check if product exists, then return the product and its details
     if (product) {
       return {
         product: product,
