@@ -66,7 +66,3 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // showTemplate();
 });
-
-
-
-
