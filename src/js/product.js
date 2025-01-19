@@ -16,53 +16,53 @@ document.addEventListener("DOMContentLoaded", () => {
 
   renderProductDetails();
 
-  // // AI helped with this stripHtmlTags
-  // function stripHtmlTags(html) {
-  //   const doc = new DOMParser().parseFromString(html, "text/html");
-  //   return doc.body.textContent || doc.body.innerText;
-  // }
+  // AI helped with this stripHtmlTags
+  function stripHtmlTags(html) {
+    const doc = new DOMParser().parseFromString(html, "text/html");
+    return doc.body.textContent || doc.body.innerText;
+  }
 
-  // // Run the showTemplate function to show the individual product details when clicked by the user...
+  // Run the showTemplate function to show the individual product details when clicked by the user...
 
-  // async function showTemplate() {
-  //   const cartTemplate = document.querySelector("#cart-template");
-  //   const cartContainer = document.querySelector(".cart-container");
-  //   const productData = new ProductData("tents");
-  //   // Get the URL parameter and assign it to productId
-  //   let productId = getParams("product");
+  async function showTemplate() {
+    const cartTemplate = document.querySelector("#cart-template");
+    const cartContainer = document.querySelector(".cart-container");
+    const productData = new ProductData("tents");
+    // Get the URL parameter and assign it to productId
+    let productId = getParams("product");
 
-  //   const product = await productData.findProductById(productId);
-  //   // console.log(product);
+    const product = await productData.findProductById(productId);
+    // console.log(product);
 
-  //   if (product) {
-  //     const clone = cartTemplate.content.cloneNode(true);
+    if (product) {
+      const clone = cartTemplate.content.cloneNode(true);
 
-  //     // const dataId = product.dataId;
-  //     const brandName = product.brand;
-  //     const brandFullName = product.brandFullName;
-  //     const productColor = product.colors;
-  //     const productImage = product.image;
-  //     const price = product.price;
+      // const dataId = product.dataId;
+      const brandName = product.brand;
+      const brandFullName = product.brandFullName;
+      const productColor = product.colors;
+      const productImage = product.image;
+      const price = product.price;
 
-  //     // Get the plain text content from 'descriptionHtmlSimple'
-  //     const descriptionSimple = stripHtmlTags(product.description);
+      // Get the plain text content from 'descriptionHtmlSimple'
+      const descriptionSimple = stripHtmlTags(product.description);
 
-  //     clone.querySelector(".brand-name").textContent = brandName;
-  //     clone.querySelector(".brand-fullname").textContent = brandFullName;
-  //     clone.querySelector(".product__color").textContent = productColor;
-  //     clone.querySelector(".product-img").src = productImage;
-  //     clone.querySelector(".product-card__price").innerHTML = "$" + price;
-  //     clone.querySelector(".product__description").innerText = descriptionSimple;
+      clone.querySelector(".brand-name").textContent = brandName;
+      clone.querySelector(".brand-fullname").textContent = brandFullName;
+      clone.querySelector(".product__color").textContent = productColor;
+      clone.querySelector(".product-img").src = productImage;
+      clone.querySelector(".product-card__price").innerHTML = "$" + price;
+      clone.querySelector(".product__description").innerText = descriptionSimple;
 
-  //     // const addToCartBtn = clone.querySelector("#addToCart");
-  //     const addToCartBtn = document.querySelector("#addToCart");
-  //     addToCartBtn.setAttribute("data-id", productId);
-  //     cartContainer.appendChild(clone);
-  //   } else {
-  //     // console.log("Product not found!");
-  //   }
+      // const addToCartBtn = clone.querySelector("#addToCart");
+      const addToCartBtn = document.querySelector("#addToCart");
+      addToCartBtn.setAttribute("data-id", productId);
+      cartContainer.appendChild(clone);
+    } else {
+      // console.log("Product not found!");
+    }
 
-  // }
+  }
 
-  // showTemplate();
+  showTemplate();
 });
