@@ -11,6 +11,7 @@
     "ecmaVersion": 2020,
     "sourceType": "module"
   },
+  "ignorePatterns": ["node_modules/"], // This will exclude node_modules from linting
   "rules": {
     "no-unused-vars": [
       1,
