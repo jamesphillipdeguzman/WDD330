@@ -1,6 +1,6 @@
 import ProductData from "./ProductData.mjs";
 // import { getParams, renderListWithTemplate } from "./utils.mjs";
-import ProductListing from "./ProductListing.mjs";
+import ProductList from "./ProductList.mjs";
 // import { list } from "postcss";
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function renderListWithTemplate() {
     const dataSource = new ProductData("tents");
     const element = document.querySelector(".product-list");
-    const listing = new ProductListing("Tents", dataSource, element);
+    const listing = new ProductList("Tents", dataSource, element);
     // console.log(listing);
     listing.init();
   }

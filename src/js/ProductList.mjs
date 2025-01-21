@@ -1,14 +1,12 @@
 
-import ProductData from "./ProductData.mjs";
 import { renderListWithTemplate } from "./utils.mjs";
 
 // Filter unique product names
-function filteredProducts(product) {
-    const uniqueProducts = product.filter((item, index, self) => {
-        return self.findIndex(product => product.Brand.Name === item.Brand.Name) === index
-    });
+function filteredProducts(products) {
+    const uniqueProducts = products.filter((item, index, self) =>
+        self.findIndex(product => product.Brand.Name === item.Brand.Name) === index);
 
-    console.log(uniqueProducts);
+    // console.log(uniqueProducts);
     return uniqueProducts;
 }
 
@@ -24,7 +22,7 @@ function productCardTemplate(product) {
     </li>`
 }
 
-export default class ProductListing {
+export default class ProductList {
     // Make the ProductListing class as flexible and reusable by passing in category, dataSource, and listElement.
     constructor(category, dataSource, listElement) {
         this.category = category;
@@ -42,7 +40,7 @@ export default class ProductListing {
     }
 
     renderList(productList) {
-        console.log(productList);
+        // console.log(productList);
         renderListWithTemplate(productCardTemplate, this.listElement, productList);
 
     }
