@@ -1,4 +1,4 @@
-import { getLocalStorage, qs } from "./utils.mjs";
+import { getLocalStorage } from "./utils.mjs";
 
 function renderCartContents() {
   const cartItems = getLocalStorage("cart");
@@ -28,7 +28,7 @@ function cartItemTemplate(item) {
 renderCartContents();
 
 function showCartTotal() {
-  const cartItems = document.querySelector("#cart-footer");
+  // const cartItems = document.querySelector("#cart-footer");
   const cartTotal = document.querySelector(".cart-total");
   if (!getLocalStorage("cart")) {
     // hide the total
@@ -42,14 +42,13 @@ function showCartTotal() {
     let cart = getLocalStorage("cart");
 
     // Get temp array and convert price to decimal using parseFloat
-    let temp = cart.map((item) => {
-      return parseFloat(item.price);
-    });
+    let temp = cart.map((item) => parseFloat(item.price));
+
 
     // Get total price using reduce method
-    let totalPrice = temp.reduce((prev, next) => {
-      return prev + next;
-    }, 0);
+    let totalPrice = temp.reduce((prev, next) => prev + next, 0);
+
+
 
     cartTotal.textContent = `Total: $${totalPrice}`;
   }
