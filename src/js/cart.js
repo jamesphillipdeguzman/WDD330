@@ -33,26 +33,20 @@ function showCartTotal() {
   if (!getLocalStorage("cart")) {
     // hide the total
     cartTotal.classList.add(".cart-footer-hide");
-
   } else {
     // show the total
     cartTotal.classList.remove(".cart-footer-hide");
-
 
     let cart = getLocalStorage("cart");
 
     // Get temp array and convert price to decimal using parseFloat
     let temp = cart.map((item) => parseFloat(item.price));
 
-
     // Get total price using reduce method
     let totalPrice = temp.reduce((prev, next) => prev + next, 0);
 
-
-
     cartTotal.textContent = `Total: $${totalPrice}`;
   }
-
 }
 
 showCartTotal();

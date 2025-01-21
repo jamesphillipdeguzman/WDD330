@@ -52,7 +52,8 @@ document.addEventListener("DOMContentLoaded", () => {
       clone.querySelector(".product__color").textContent = productColor;
       clone.querySelector(".product-img").src = productImage;
       clone.querySelector(".product-card__price").innerHTML = "$" + price;
-      clone.querySelector(".product__description").innerText = descriptionSimple;
+      clone.querySelector(".product__description").innerText =
+        descriptionSimple;
 
       // const addToCartBtn = clone.querySelector("#addToCart");
       const addToCartBtn = document.querySelector("#addToCart");
@@ -61,7 +62,6 @@ document.addEventListener("DOMContentLoaded", () => {
     } else {
       // console.log("Product not found!");
     }
-
   }
 
   showTemplate();
