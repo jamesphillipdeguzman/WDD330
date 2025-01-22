@@ -1,5 +1,5 @@
 import ProductData from "./ProductData.mjs";
-// import { getParams, renderListWithTemplate } from "./utils.mjs";
+import { loadHeaderFooter } from "./utils.mjs";
 import ProductList from "./ProductList.mjs";
 // import { list } from "postcss";
 
@@ -13,5 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
     listing.init();
   }
 
+  loadHeaderFooter();
   renderListWithTemplate();
+
 });
