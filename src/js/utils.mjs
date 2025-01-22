@@ -7,7 +7,7 @@ export function qs(selector, parent = document) {
 
 // retrieve data from localstorage
 export function getLocalStorage(key) {
-  return JSON.parse(localStorage.getItem(key)) || [];
+  return JSON.parse(localStorage.getItem(key));
 }
 // save data to local storage
 export function setLocalStorage(key, data) {
@@ -35,7 +35,7 @@ export function renderListWithTemplate(templateFn, parentElement, list, position
   const htmlStrings = list.map(templateFn);
 
   if (!parentElement) {
-    console.error("Parent element not found");
+    // console.error("Parent element not found");
     return
   }
 
@@ -45,4 +45,35 @@ export function renderListWithTemplate(templateFn, parentElement, list, position
   } else {
     parentElement.insertAdjacentHTML(position, htmlStrings.join(""));
   }
+}
+
+
+export function loadHeaderFooter() {
+  const path = "/src/public/partials/";
+  const headerPath = "/src/public/partials/header.html";
+  const footerPath = "/src/public/partials/footer.html";
+
+  loadTemplate(path);
+
+  const header = document.querySelector(".main-header");
+  const footer = document.querySelector(".main-footer");
+
+  renderWithTemplate(header, headerPath);
+  renderWithTemplate(footer, footerPath);
+}
+
+export function renderWithTemplate(template, parentElement, data, callback) {
+  parentElement.insertAdjacentHTML("afterbegin", template);
+  if (callback) {
+    callback(data)
+  }
+}
+
+
+export async function loadTemplate(path) {
+
+  const html = await fetch(path).then((response) => response.text());
+  const template = document.createElement("template");
+  template.innerHTML = html;
+
 }

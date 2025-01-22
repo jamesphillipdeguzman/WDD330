@@ -4,14 +4,16 @@ function renderCartContents() {
   const cartItems = getLocalStorage("cart");
 
   // Generate HTML for each cart item, passing the index to cartItemTemplate
-  const htmlItems = cartItems.map((item, index) => cartItemTemplate(item, index));
+  const htmlItems = cartItems.map((item, index) =>
+    cartItemTemplate(item, index),
+  );
   document.querySelector(".product-list").innerHTML = htmlItems.join("");
 
   // Attach event listeners to all "X" buttons
   document.querySelectorAll(".remove-item").forEach((button) => {
     button.addEventListener("click", function () {
       const itemIndex = this.dataset.index; // Get the index from the data-index attribute
-      removeItemFromCart(itemIndex);       // Remove the item from the cart
+      removeItemFromCart(itemIndex); // Remove the item from the cart
     });
   });
 }
@@ -41,7 +43,6 @@ function removeItemFromCart(itemIndex) {
 
   // Update the Cart Total
   showCartTotal();
-
 }
 
 // Initial render of cart contents
