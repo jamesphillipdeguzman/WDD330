@@ -58,6 +58,7 @@ document.addEventListener("DOMContentLoaded", () => {
       // const addToCartBtn = clone.querySelector("#addToCart");
       const addToCartBtn = document.querySelector("#addToCart");
       addToCartBtn.setAttribute("data-id", productId);
+      cartContainer.innerHTML = "";
       cartContainer.appendChild(clone);
     } else {
       // console.log("Product not found!");

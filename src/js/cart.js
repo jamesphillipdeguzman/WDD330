@@ -3,11 +3,19 @@ import { getLocalStorage, setLocalStorage } from "./utils.mjs";
 function renderCartContents() {
   const cartItems = getLocalStorage("cart");
 
+
+  const productListEl = document.querySelector(".product-list");
+  // Clear the existing cart items
+  productListEl.innerHTML = "";
+
   // Generate HTML for each cart item, passing the index to cartItemTemplate
   const htmlItems = cartItems.map((item, index) =>
+
     cartItemTemplate(item, index),
   );
-  document.querySelector(".product-list").innerHTML = htmlItems.join("");
+
+  productListEl.innerHTML = htmlItems.join("");
+
 
   // Attach event listeners to all "X" buttons
   document.querySelectorAll(".remove-item").forEach((button) => {

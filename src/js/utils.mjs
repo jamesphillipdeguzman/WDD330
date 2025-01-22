@@ -47,33 +47,41 @@ export function renderListWithTemplate(templateFn, parentElement, list, position
   }
 }
 
+async function loadTemplate(path) {
 
-export function loadHeaderFooter() {
-  const path = "/src/public/partials/";
-  const headerPath = "/src/public/partials/header.html";
-  const footerPath = "/src/public/partials/footer.html";
-
-  loadTemplate(path);
-
-  const header = document.querySelector(".main-header");
-  const footer = document.querySelector(".main-footer");
-
-  renderWithTemplate(header, headerPath);
-  renderWithTemplate(footer, footerPath);
+  const res = await fetch(path)
+  const template = await res.text();
+  return template;
 }
 
-export function renderWithTemplate(template, parentElement, data, callback) {
+export async function loadHeaderFooter() {
+
+  const headerPath = "/partials/header.html";
+  const footerPath = "/partials/footer.html";
+
+  const headerTemplate = await loadTemplate(headerPath);
+  const headerEl = document.querySelector("#main-header");
+  const footerTemplate = await loadTemplate(footerPath);
+  const footerEl = document.querySelector("#main-footer");
+
+  let clear = false;
+
+
+  renderWithTemplate(headerTemplate, headerEl, clear);
+  renderWithTemplate(footerTemplate, footerEl, clear);
+}
+
+export function renderWithTemplate(template, parentElement, clear, data, callback) {
+  if (clear) {
+    parentElement.innerHTML = "";
+  }
+
   parentElement.insertAdjacentHTML("afterbegin", template);
+  // if there is a callback, call it with the data
   if (callback) {
     callback(data)
   }
 }
 
 
-export async function loadTemplate(path) {
 
-  const html = await fetch(path).then((response) => response.text());
-  const template = document.createElement("template");
-  template.innerHTML = html;
-
-}
