@@ -1,7 +1,6 @@
+import { loadHeaderFooter } from "./utils.mjs";
 import ProductData from "./ProductData.mjs";
-// import { getParams, renderListWithTemplate } from "./utils.mjs";
 import ProductList from "./ProductList.mjs";
-// import { list } from "postcss";
 
 document.addEventListener("DOMContentLoaded", () => {
   // Run the renderListWithTemplate function to load ALL the products from tents.json (e.g. all six of them)
@@ -10,7 +9,17 @@ document.addEventListener("DOMContentLoaded", () => {
     const element = document.querySelector(".product-list");
     const listing = new ProductList("Tents", dataSource, element);
     // console.log(listing);
-    listing.init();
+
+    // initialize the header and footer
+    const urlName = window.location.pathname;
+    if (urlName.includes("cart/index.html")) {
+      // Do not reload all the products if the user is on the cart page
+      loadHeaderFooter();
+    } else {
+      // initialize the product list and load the header and footer
+      listing.init();
+      loadHeaderFooter();
+    }
   }
 
   renderListWithTemplate();
