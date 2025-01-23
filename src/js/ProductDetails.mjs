@@ -52,8 +52,3 @@ export default class ProductDetails {
 
 
 }
-// document.addEventListener("DOMContentLoaded", () => {
-//     const productDetails = new ProductDetails();
-//     productDetails.init();
-
-// });
