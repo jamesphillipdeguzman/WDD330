@@ -1,3 +1,4 @@
+const baseURL = import.meta.env.VITE_SERVER_URL
 function convertToJson(res) {
   if (res.ok) {
     return res.json();
@@ -11,8 +12,8 @@ export default class ProductData {
     this.category = category;
     this.path = `../json/${this.category}.json`;
   }
-  async getData() {
-    return fetch(this.path)
+  async getData(category) {
+    return fetch(baseURL + `products/search/${category}`)
       .then(convertToJson)
       .then((data) => data);
   }
