@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // initialize the header and footer
     const urlName = window.location.pathname;
-    if (urlName.includes("cart/index.html")) {
+    if (urlName.includes("cart/index.html") || urlName.includes("cart/")) {
       // Do not reload all the products if the user is on the cart page
       loadHeaderFooter();
     } else {
@@ -20,7 +20,8 @@ document.addEventListener("DOMContentLoaded", () => {
       listing.init();
       loadHeaderFooter();
     }
-  }
 
+
+  }
   renderListWithTemplate();
 });
