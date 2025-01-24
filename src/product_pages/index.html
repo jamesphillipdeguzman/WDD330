@@ -1,40 +1,31 @@
-<!doctype html>
-
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <title>Sleep Outside</title>
-
+    <title>Sleep Outside | Product Details</title>
     <link rel="stylesheet" href="../css/style.css" />
-    <script src="../js/main.js" type="module"></script>
     <script src="../js/product.js" type="module"></script>
   </head>
-
   <body>
     <header class="divider" id="main-header"></header>
 
-    <template id="cart-template">
-      <main class="divider">
-        <section class="product-detail">
-          <div class="cart-item">
-            <div class="brand-name"></div>
-            <div class="brand-fullname divider"></div>
-            <img class="product-img divider" src="" alt="product-img" />
-            <div class="product-card__price"></div>
-            <div class="product__color"></div>
-            <div class="product__description"></div>
-          </div>
-        </section>
-      </main>
-    </template>
+    <main class="divider">
+      <section class="product-detail">
+        <div class="cart-item">
+          <!-- Dynamic product details populated by JavaScript -->
+          <h1 class="brand-name"></h1>
+          <h2 class="brand-fullname divider"></h2>
+          <img class="product-img divider" src="" alt="product image" />
+          <p class="product-card__price"></p>
+          <p class="product__description"></p>
+        </div>
+        <div class="product-detail__add">
+          <button id="addToCart">Add to Cart</button>
+        </div>
+      </section>
+    </main>
 
-    <div class="cart-container"></div>
-    <div class="product-detail__add">
-      <button id="addToCart" data-id="">Add to Cart</button>
-    </div>
     <footer id="main-footer"></footer>
   </body>
 </html>

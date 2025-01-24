@@ -8,47 +8,62 @@ export default class ProductDetails {
     }
 
     // Initialize the page and add event listeners
-    init() {
-        // Add listener to "Add to Cart" button
-        document.getElementById("addToCart").addEventListener("click", this.addToCartHandler.bind(this));
+    async init() {
+        try {
+            // Fetch product details using the product ID
+            const product = await this.dataSource.findProductById(this.productId);
+
+            // Save the product data for future use
+            this.product = product;
+
+            // Populate the product details on the page
+            this.renderProductDetails(product);
+
+            // Add listener to the "Add to Cart" button
+            document.getElementById("addToCart").addEventListener("click", this.addToCartHandler.bind(this));
+        } catch (error) {
+            console.error("Error initializing product details:", error);
+        }
+    }
+
+    // Render product details on the page
+    renderProductDetails(product) {
+        // Populate product details dynamically
+        document.querySelector(".brand-name").textContent = product.Brand?.Name || "Brand Name Not Available";
+        document.querySelector(".brand-fullname").textContent = product.Name || "Product Name Not Available";
+        document.querySelector(".product-img").src = product.Images?.PrimaryLarge || "placeholder.jpg"; // Fallback image if unavailable
+        document.querySelector(".product-img").alt = product.Name || "Product Image";
+        document.querySelector(".product-card__price").textContent = `$${product.FinalPrice || "0.00"}`;
+        document.querySelector(".product__description").textContent = product.Description || "No description available.";
     }
 
     // Add to cart button event handler
     async addToCartHandler() {
-        // Find the product by Id
-        const product = await this.dataSource.findProductById(this.productId);
+        try {
+            // Add the product to the cart
+            this.addProductToCart(this.product);
 
-        // console.log(product);
-
-        // Add the product to the cart
-        this.addProductToCart(product);
+            // Provide feedback to the user (optional)
+            alert("Product added to cart!");
+        } catch (error) {
+            console.error("Error adding product to cart:", error);
+        }
     }
 
     // Add product to the shopping cart
     addProductToCart(product) {
-
-
-        // Check if there's an existing cart
-        let cart = getLocalStorage("cart") || []; // Get existing cart or initialize as an empty array
-
-        // Ensure cart is an array (if it's not, initialize it as an empty array) AI helped here
-        if (!Array.isArray(cart)) {
-            cart = [];
-        }
-
-        // If the cart is empty, push the product to the cart array and save it to local storage
-        if (cart.length === 0) {
-            cart.push(product);
-            setLocalStorage("cart", cart);
-        } else {
-            // If the cart is NOT empty, keep pushing the product to the cart array and log it to the console
-            cart.push(product);
-            // console.log(cart);
-        }
-
-        // Update the contents of the cart in local storage
+        let cart = getLocalStorage("cart") || [];
+      
+        // Add FinalPrice and ensure it's valid
+        const cartItem = {
+          ...product,
+          ListPrice: product.FinalPrice || 0, // Default to 0 if missing
+          cartItemId: Date.now().toString(),  // Assign a unique ID
+        };
+      
+        cart.push(cartItem);
         setLocalStorage("cart", cart);
-    }
-
-
+      }
+      
+      
 }
