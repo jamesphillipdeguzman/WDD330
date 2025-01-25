@@ -1,10 +1,3 @@
-function convertToJson(res) {
-  if (res.ok) {
-    return res.json();
-  } else {
-    throw new Error("Bad Response");
-  }
-}
 
 export default class ProductData {
   constructor(category) {
@@ -13,7 +6,14 @@ export default class ProductData {
   }
   async getData() {
     return fetch(this.path)
-      .then(convertToJson)
+      .then(function convertToJson(res) {
+        if (res.ok) {
+          return res.json();
+        } else {
+          throw new Error("Bad Response");
+        }
+
+      })
       .then((data) => data);
   }
   async findProductById(id) {
