@@ -1,10 +1,6 @@
 module.exports = {
     presets: [
-        [
-            "@babel/preset-env",
-            {
-                modules: false, // Keep ECMAScript modules as-is
-            }
-        ]
-    ]
+        '@babel/preset-env',
+    ],
+    sourceType: 'module', // This ensures that Babel recognizes ECMAScript modules
 };
