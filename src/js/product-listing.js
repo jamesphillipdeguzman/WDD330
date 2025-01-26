@@ -7,7 +7,7 @@ function renderListWithTemplate() {
     const element = document.querySelector(".product-list");
     const listing = new ProductList("Tents", dataSource, element);
     // console.log(listing);
-
+    listing.init();
 
 }
 renderListWithTemplate();
