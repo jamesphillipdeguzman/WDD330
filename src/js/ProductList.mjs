@@ -18,7 +18,7 @@ function filteredProducts(products) {
 function productCardTemplate(product) {
     // Fixed the href to avoid relative path issues; used '/' for absolute path    
     return `<li class="product-card">
-      <a href="/product-pages/index.html?product=${product.Id}"> 
+      <a href="product-pages/index.html?product=${product.Id}"> 
         <img 
             src="${product.Images.PrimaryMedium}" 
             alt="Image of ${product.Name}"

@@ -85,7 +85,7 @@ export function renderWithTemplate(template, parentElement, clear, data, callbac
   }
 
   parentElement.insertAdjacentHTML("afterbegin", template);
-  applyCartStyles();
+  // applyCartStyles();
   // if there is a callback, call it with the data
   if (callback) {
     callback(data)
@@ -94,13 +94,13 @@ export function renderWithTemplate(template, parentElement, clear, data, callbac
 
 //  Helper function to fix styling for backpack icon
 
-export function applyCartStyles() {
-  const cart = document.querySelector('.cart');
-  if (cart) {
-    cart.style.position = 'absolute';
-    cart.style.top = '20px'; // Distance from top
-    cart.style.right = '20px'; // Distance from right
-    cart.style.zIndex = '1000'; // Ensure it's above other content
-  }
-}
+// export function applyCartStyles() {
+//   const cart = document.querySelector('.cart');
+//   if (cart) {
+//     cart.style.position = 'absolute';
+//     cart.style.top = '20px'; // Distance from top
+//     cart.style.right = '20px'; // Distance from right
+//     cart.style.zIndex = '1000'; // Ensure it's above other content
+//   }
+// }
 
