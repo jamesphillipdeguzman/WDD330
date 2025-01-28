@@ -17,38 +17,34 @@ export default class ProductDetails {
     async addToCartHandler() {
         // Find the product by Id
         const product = await this.dataSource.findProductById(this.productId);
-
-        // console.log(product);
-
-        // Add the product to the cart
-        this.addProductToCart(product);
+        
+        // Get the quantity from the input
+        const quantity = parseInt(document.getElementById("quantity").value) || 1;
+        
+        // Add the product to the cart with quantity
+        this.addProductToCart(product, quantity);
     }
 
     // Add product to the shopping cart
-    addProductToCart(product) {
+    addProductToCart(product, quantity) {
         // Check if there's an existing cart
-        let cart = getLocalStorage("cart") || []; // Get existing cart or initialize as an empty array
+        let cart = getLocalStorage("cart") || [];
 
-        // Ensure cart is an array (if it's not, initialize it as an empty array) AI helped here
+        // Ensure cart is an array
         if (!Array.isArray(cart)) {
             cart = [];
         }
 
-        // If the cart is empty, push the product to the cart array and save it to local storage
-        if (cart.length === 0) {
-            cart.push(product);
-            setLocalStorage("cart", cart);
-        } else {
-            // If the cart is NOT empty, keep pushing the product to the cart array and log it to the console
-            cart.push(product);
-            // console.log(cart);
-        }
+        // Add quantity to the product object
+        const productWithQuantity = {
+            ...product,
+            quantity: quantity
+        };
 
-        // Update the contents of the cart in local storage
+        cart.push(productWithQuantity);
         setLocalStorage("cart", cart);
         
-        // Call showPopupMessage inside the method
-        this.showPopupMessage("Product added to cart");
+        this.showPopupMessage(`${quantity} item(s) added to cart`);
     }
 
     // Add showPopupMessage as a class method

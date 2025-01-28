@@ -30,7 +30,8 @@ function cartItemTemplate(item, index) {
             <img src="${item.product.Image}" alt="${item.product.NameWithoutBrand}" />
         </a>
         <h2 class="card__name">${item.product.NameWithoutBrand}</h2>
-        <p class="cart-card__price">$${item.product.FinalPrice}</p>
+        <p class="cart-card__quantity">qty: ${item.quantity}</p>
+        <p class="cart-card__price">$${(item.product.FinalPrice * item.quantity).toFixed(2)}</p>
     </li>`;
 }
 
@@ -54,7 +55,6 @@ function removeItemFromCart(itemIndex) {
 renderCartContents();
 
 function showCartTotal() {
-  // const cartItems = document.querySelector("#cart-footer");
   const cartTotal = document.querySelector(".cart-total");
   if (!getLocalStorage("cart")) {
     // hide the total
@@ -65,13 +65,13 @@ function showCartTotal() {
 
     let cart = getLocalStorage("cart");
 
-    // Get temp array and convert price to decimal using parseFloat
-    let temp = cart.map((item) => parseFloat(item.price));
+    // Calculate total by multiplying price by quantity for each item
+    const totalPrice = cart.reduce((total, item) => {
+      const itemPrice = item.product.FinalPrice * item.quantity;
+      return total + itemPrice;
+    }, 0);
 
-    // Get total price using reduce method
-    let totalPrice = temp.reduce((prev, next) => prev + next, 0);
-
-    cartTotal.textContent = `Total: $${totalPrice}`;
+    cartTotal.textContent = `Total: $${totalPrice.toFixed(2)}`;
   }
 }
 

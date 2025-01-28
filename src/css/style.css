@@ -295,3 +295,26 @@ footer {
   85% { opacity: 1; transform: translateY(0); }
   100% { opacity: 0; transform: translateY(-20px); }
 }
+
+.quantity-selector {
+    margin-bottom: 1em;
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+}
+
+.quantity-selector input {
+    width: 60px;
+    padding: 0.5em;
+    font-size: 1em;
+    border: 1px solid var(--light-grey);
+    border-radius: 4px;
+}
+
+.product-detail__add {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1em;
+    margin-top: 1em;
+}
