@@ -26,8 +26,6 @@ export default class ProductDetails {
 
     // Add product to the shopping cart
     addProductToCart(product) {
-
-
         // Check if there's an existing cart
         let cart = getLocalStorage("cart") || []; // Get existing cart or initialize as an empty array
 
@@ -48,7 +46,21 @@ export default class ProductDetails {
 
         // Update the contents of the cart in local storage
         setLocalStorage("cart", cart);
+        
+        // Call showPopupMessage inside the method
+        this.showPopupMessage("Product added to cart");
     }
 
-
+    // Add showPopupMessage as a class method
+    showPopupMessage(message) {
+        const popup = document.createElement('div');
+        popup.className = 'popup-message';
+        popup.textContent = message;
+        
+        document.body.appendChild(popup);
+        
+        setTimeout(() => {
+            popup.remove();
+        }, 2000);
+    }
 }

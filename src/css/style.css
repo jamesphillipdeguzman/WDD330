@@ -277,3 +277,21 @@ footer {
   font-size: var(--small-font);
   padding: 1em;
 }
+.popup-message {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color:var(--secondary-color);
+  color: white;
+  padding: 15px 25px;
+  border-radius: 5px;
+  z-index: 1000;
+  animation: fadeInOut 2s ease-in-out;
+}
+
+@keyframes fadeInOut {
+  0% { opacity: 0; transform: translateY(-20px); }
+  15% { opacity: 1; transform: translateY(0); }
+  85% { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(-20px); }
+}
