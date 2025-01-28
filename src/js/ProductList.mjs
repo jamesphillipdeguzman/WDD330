@@ -16,11 +16,11 @@ function filteredProducts(products) {
 }
 
 function productCardTemplate(product) {
-
+    // Fixed the href to avoid relative path issues; used '/' for absolute path    
     return `<li class="product-card">
-      <a href="product-pages/index.html?product=${product.Id}">
+      <a href="/product-pages/index.html?product=${product.Id}"> 
         <img 
-            src="${product.Image}" 
+            src="${product.Images.PrimaryMedium}" 
             alt="Image of ${product.Name}"
         />
         <h3 class="card__brand">${product.Brand.Name}</h3>
@@ -39,6 +39,7 @@ export default class ProductList {
     }
     // Use init function to initialize and grab the dataSource using the getData function from ProductData class.
     async init() {
+        debugger;
         const productList = await this.dataSource.getData(this.category);
 
         // List only those products with valid images
@@ -46,6 +47,9 @@ export default class ProductList {
         // Render list of products here...
         this.renderList(filteredList);
         // Set the title of the page to the category
+        if (document.title === null || document.title === "" || document.title === "Sleep Outside | Home") {
+            return
+        }
         document.title = this.category.charAt(0).toUpperCase() + this.category.slice(1);
     }
 

@@ -1,12 +1,10 @@
 // product.js - Renders the product details (e.g., a sample product like "tents").
 // - This file is not being called by any module and is intended for testing purposes only.
 
-
 import { getParams, loadHeaderFooter } from "./utils.mjs";
 import ProductData from "./ProductData.mjs";
 import ProductDetails from "./ProductDetails.mjs"; // Corrected the import to match the class name
 document.addEventListener("DOMContentLoaded", () => {
-
   loadHeaderFooter();
 
   function renderProductDetails() {

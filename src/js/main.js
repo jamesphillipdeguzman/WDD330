@@ -1,8 +1,6 @@
 import { loadHeaderFooter } from "./utils.mjs";
 
-
 document.addEventListener("DOMContentLoaded", () => {
-
   // initialize the header and footer
   // const urlName = window.location.pathname;
   // if (urlName.includes("cart/index.html") || urlName.includes("cart/")) {
@@ -10,7 +8,5 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // }
 
-
   loadHeaderFooter();
-
 });

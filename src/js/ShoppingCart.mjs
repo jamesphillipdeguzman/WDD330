@@ -1,7 +1,7 @@
 
 // ShoppingCart - Utilized by the cart's index.html to manage the shopping cart functionality.
 
-import { getLocalStorage } from "./utils.mjs";
+import { getLocalStorage, setLocalStorage } from "./utils.mjs";
 
 
 function renderCartContents() {
