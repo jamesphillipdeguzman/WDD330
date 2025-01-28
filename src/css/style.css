@@ -237,7 +237,7 @@ button {
 .product-categories {
   display: flex;
   flex-direction: row;
-
+  cursor: pointer;
   padding: 0.5em;
   align-items: center;
   justify-content: center;

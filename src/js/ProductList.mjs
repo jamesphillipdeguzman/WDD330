@@ -1,7 +1,12 @@
+// ProductList.mjs - Filters products by unique brand name.
+// - Creates the ProductCardTemplate for individual product display.
+// - Defines the ProductList class, which takes in the category, dataSource, and listElement.
+// - Includes the init function to render the product list.
+
 
 import { renderListWithTemplate } from "./utils.mjs";
 
-// Filter unique product names
+//Filter unique product names
 function filteredProducts(products) {
     const uniqueProducts = products.filter((item, index, self) =>
         self.findIndex(product => product.Brand.Name === item.Brand.Name) === index);
@@ -14,7 +19,10 @@ function productCardTemplate(product) {
 
     return `<li class="product-card">
       <a href="product-pages/index.html?product=${product.Id}">
-        <img src="${product.Image}" alt="Image of ${product.Name}">
+        <img 
+            src="${product.Image}" 
+            alt="Image of ${product.Name}"
+        />
         <h3 class="card__brand">${product.Brand.Name}</h3>
         <h2 class="card__name">${product.Name}</h2>
         <p class="product-card__price">$${product.FinalPrice}</p>
@@ -31,12 +39,14 @@ export default class ProductList {
     }
     // Use init function to initialize and grab the dataSource using the getData function from ProductData class.
     async init() {
-        const productList = await this.dataSource.getData()
+        const productList = await this.dataSource.getData(this.category);
 
         // List only those products with valid images
         const filteredList = filteredProducts(productList);
         // Render list of products here...
         this.renderList(filteredList);
+        // Set the title of the page to the category
+        document.title = this.category.charAt(0).toUpperCase() + this.category.slice(1);
     }
 
     renderList(productList) {
