@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-const baseURL = import.meta.env.VITE_SERVER_URL
-=======
 
 // ProductData.mjs - Class template for handling product data.
 // - Responsible for finding a product by its Id.
@@ -9,7 +6,6 @@ const baseURL = import.meta.env.VITE_SERVER_URL
 
 
 const baseURL = import.meta.env.VITE_SERVER_URL;
->>>>>>> origin/main
 function convertToJson(res) {
   if (res.ok) {
     return res.json();
@@ -24,15 +20,9 @@ export default class ProductData {
     // this.path = `../json/${this.category}.json`;
   }
   async getData(category) {
-<<<<<<< HEAD
-    return fetch(baseURL + `products/search/${category}`)
-      .then(convertToJson)
-      .then((data) => data);
-=======
     const response = await fetch(`${baseURL}products/search/${category}`);
     const data = await convertToJson(response);
     return data.Result;
->>>>>>> origin/main
   }
 
   async findProductById(id) {
