@@ -109,10 +109,6 @@ button {
   border-bottom: 2px solid var(--primary-color);
 }
 
-.cart-footer-hide {
-  display: none;
-}
-
 /* End utility classes */
 
 /* Cart icon styles */
@@ -124,10 +120,24 @@ button {
 
 .cart svg {
   width: 25px;
+  height: 25px;
+  /* Make sure the height matches the width if you want it to remain square */
 }
 
 .cart:hover svg {
   fill: gray;
+  /* Changes the color of the SVG on hover */
+}
+
+/* If the paths inside the SVG don't change color by default, please target them explicitly: */
+.cart svg path {
+  transition: fill 0.3s ease;
+  /* Adds smooth transition for the color change */
+}
+
+.cart:hover svg path {
+  fill: gray;
+  /* Ensures the paths inside the SVG are also affected */
 }
 
 /* End cart icon styles */
@@ -229,6 +239,40 @@ button {
   grid-row: 2;
   grid-column: 3;
 }
+
+/* Start products styles */
+
+.products {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+}
+
+.products ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.products category-name {
+  font-size: 1rem;
+  text-align: center;
+}
+
+.product-grid {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.product-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+/* End products styles */
 
 @media screen and (min-width: 500px) {
   body {

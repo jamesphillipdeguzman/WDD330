@@ -1,3 +1,5 @@
+// utils.mjs - Contains utility functions used by other modules.
+
 // wrapper for querySelector...returns matching element
 export function qs(selector, parent = document) {
   return parent.querySelector(selector);
@@ -30,7 +32,13 @@ export function getParams(param) {
 }
 
 
-export function renderListWithTemplate(templateFn, parentElement, list, position = "afterbegin", clear = false) {
+export function renderListWithTemplate(
+  templateFn,
+  parentElement,
+  list,
+  position = "afterbegin",
+  clear = false
+) {
 
   const htmlStrings = list.map(templateFn);
 
@@ -64,11 +72,11 @@ export async function loadHeaderFooter() {
   const footerTemplate = await loadTemplate(footerPath);
   const footerEl = document.querySelector("#main-footer");
 
-  let clear = false;
+  // let clear = false;
 
 
-  renderWithTemplate(headerTemplate, headerEl, clear);
-  renderWithTemplate(footerTemplate, footerEl, clear);
+  renderWithTemplate(headerTemplate, headerEl);
+  renderWithTemplate(footerTemplate, footerEl);
 }
 
 export function renderWithTemplate(template, parentElement, clear, data, callback) {
@@ -77,11 +85,22 @@ export function renderWithTemplate(template, parentElement, clear, data, callbac
   }
 
   parentElement.insertAdjacentHTML("afterbegin", template);
+  // applyCartStyles();
   // if there is a callback, call it with the data
   if (callback) {
     callback(data)
   }
 }
 
+//  Helper function to fix styling for backpack icon
 
+// export function applyCartStyles() {
+//   const cart = document.querySelector('.cart');
+//   if (cart) {
+//     cart.style.position = 'absolute';
+//     cart.style.top = '20px'; // Distance from top
+//     cart.style.right = '20px'; // Distance from right
+//     cart.style.zIndex = '1000'; // Ensure it's above other content
+//   }
+// }
 
