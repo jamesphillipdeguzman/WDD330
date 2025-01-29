@@ -85,7 +85,7 @@ header {
   margin-top: -1.3em;
 }
 
-.logo--square>div {
+.logo--square > div {
   margin-top: -1.7em;
 }
 
@@ -150,8 +150,6 @@ button {
   margin: auto;
 }
 
-
-
 .product-list {
   display: flex;
   flex-flow: row wrap;
@@ -178,7 +176,6 @@ button {
   border: 1px solid var(--light-grey);
   border-radius: 5px;
   max-width: 250px;
-
 }
 
 .product-card:hover {
@@ -194,15 +191,12 @@ button {
 .product-grid a {
   text-decoration: none;
   color: var(--dark-grey);
-
-
 }
 
 .category-name {
   font-size: 1rem;
   margin-top: 10px;
   text-align: center;
-
 }
 
 .card__brand {
@@ -262,7 +256,6 @@ button {
   grid-row: 2;
   grid-column: 3;
 }
-
 
 /* Start products styles */
 
