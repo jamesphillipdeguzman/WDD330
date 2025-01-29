@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
         <span data-index="${index}" class="remove-item" style="color: red; cursor: pointer;">X</span>
         <a href="#" class="cart-card__image">
             <img 
-            src="${item.Images.PrimaryLarge}" 
+            src="${item.Images.PrimaryMedium}" 
             alt="${item.Name}" 
             />
         </a>

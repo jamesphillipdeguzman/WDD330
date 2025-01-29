@@ -6,6 +6,7 @@ import { setLocalStorage, getLocalStorage } from "./utils.mjs";
 
 
 function productDetailsTemplate(product) {
+    debugger;
     // Check for brand existence and provide fallback
     const brandName = product.Brand && product.Brand.Name ? product.Brand.Name : "Unknown Brand";
     return `<section class="product-detail">

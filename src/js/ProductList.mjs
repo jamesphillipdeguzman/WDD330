@@ -46,6 +46,7 @@ export default class ProductList {
         const filteredList = filteredProducts(productList);
         // Render list of products here...
         this.renderList(filteredList);
+        // this.renderList(productList);
         // Set the title of the page to the category
         if (document.title === null || document.title === "" || document.title === "Sleep Outside | Home") {
             return
