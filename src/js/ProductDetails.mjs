@@ -78,6 +78,9 @@ export default class ProductDetails {
                 // Add the product to the cart
                 this.addToCart();
             }
+        } else {
+            // if cart is empty, add the product to the cart
+            this.addToCart();
         }
     }
 
