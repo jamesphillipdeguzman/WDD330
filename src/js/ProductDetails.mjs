@@ -46,15 +46,44 @@ export default class ProductDetails {
             // Add listener to "Add to Cart" button
             document
                 .getElementById("addToCart")
-                .addEventListener("click", this.addToCart.bind(this));
+                .addEventListener("click", this.checkDuplicates.bind(this));
 
         } catch (error) {
             console.error("Error loading product details", error);
         }
     }
 
+    // Check for duplicate items in the cart
+    async checkDuplicates() {
+
+        debugger;
+        const cart = getLocalStorage("cart") || [];
+        if (cart.length > 0) {
+            const cartItem = cart.find((item) => item.Id === this.productId);
+            if (cartItem) {
+                this.showPopupMessage("Item already in cart");
+                // increase quantity of the item in the cart
+                cartItem.quantity += 1;
+                // Update the cart in local storage 
+                setLocalStorage("cart", cart);
+                // Update the quantity input field
+                document.querySelector("#quantity").value = cartItem.quantity;
+
+            } else {
+                // filter out the item from the cart with same id   
+                const filteredCart = cart.filter((item) => item.Id !== this.productId);
+                // Save the updated cart back to local storage
+                setLocalStorage("cart", filteredCart);
+
+                // Add the product to the cart
+                this.addToCart();
+            }
+        }
+    }
+
     // Add to cart button event handler
     async addToCart() {
+
 
         // Find the product by Id
         const product = await this.dataSource.findProductById(this.productId);

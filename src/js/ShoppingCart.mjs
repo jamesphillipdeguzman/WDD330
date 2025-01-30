@@ -67,7 +67,7 @@ document.addEventListener("DOMContentLoaded", () => {
   renderCartContents();
 
   function showCartTotal() {
-    debugger;
+
     // const cartItems = document.querySelector("#cart-footer");
     const cartTotal = document.querySelector(".cart-total");
     if (!getLocalStorage("cart")) {
@@ -92,6 +92,8 @@ document.addEventListener("DOMContentLoaded", () => {
   showCartTotal();
 
 });
+
+
 
 export default class ShoppingCart {
 
