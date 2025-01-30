@@ -67,6 +67,7 @@ document.addEventListener("DOMContentLoaded", () => {
   renderCartContents();
 
   function showCartTotal() {
+    debugger;
     // const cartItems = document.querySelector("#cart-footer");
     const cartTotal = document.querySelector(".cart-total");
     if (!getLocalStorage("cart")) {
@@ -79,7 +80,7 @@ document.addEventListener("DOMContentLoaded", () => {
       let cart = getLocalStorage("cart");
 
       // Get temp array and convert price to decimal using parseFloat
-      let temp = cart.map((item) => parseFloat(item.FinalPrice));
+      let temp = cart.map((item) => parseFloat(item.FinalPrice * item.quantity || 1));
 
       // Get total price using reduce method
       let totalPrice = temp.reduce((prev, next) => prev + next, 0);
