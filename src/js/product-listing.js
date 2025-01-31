@@ -7,14 +7,19 @@ import { loadHeaderFooter, getParams } from "./utils.mjs";
 
 loadHeaderFooter();
 
-// Run the renderListWithTemplate function to load ALL the products from tents.json (e.g. all six of them)
-function renderListWithTemplate() {
-  debugger;
+document.addEventListener("DOMContentLoaded", () => {
   const category = getParams("category");
   const dataSource = new ProductData(category); // ensure category is passed here...
   const element = document.querySelector(".product-list");
   const listing = new ProductList(category, dataSource, element);
   // console.log(listing);
   listing.init();
-}
-renderListWithTemplate();
+  // Load the category title
+  const categoryTitle = document.querySelector(".title");
+  if (categoryTitle) {
+    categoryTitle.textContent = categoryTitle.textContent + " - " + category.charAt(0).toUpperCase() + category.slice(1);
+  } else {
+    return;
+  }
+
+});

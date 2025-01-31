@@ -1,13 +1,34 @@
-
 // ShoppingCart - Utilized by the cart's index.html to manage the shopping cart functionality.
-
 import { getLocalStorage, setLocalStorage } from "./utils.mjs";
-document.addEventListener("DOMContentLoaded", () => {
 
+
+function cartItemTemplate(item, index) {
+  // Use the PrimaryMedium image if available, otherwise use PrimarySmall 
+  const imageSrc = item.Images.PrimaryMedium || item.Images.PrimarySmall;
+
+  return `<li class="cart-card divider">
+      <span data-index="${index}" class="remove-item" style="color: red; cursor: pointer;">X</span>
+      <a href="#" class="cart-card__image">
+          <img 
+          src="${imageSrc}" 
+          alt="${item.Name}" 
+          />
+      </a>
+      <a href="#">
+      <h2 class="card__name">${item.Name}</h2>
+      </a>
+      <p class="cart-card__color">${item.Colors[0].ColorName}</p>  
+      <p class="cart-card__quantity">qty: ${item.quantity || 1}</p>
+      <p class="cart-card__price">$${(item.FinalPrice * (item.quantity || 1)).toFixed(2)}</p>
+    </li>`;
+}
+
+document.addEventListener("DOMContentLoaded", () => {
   function renderCartContents() {
     const cartItems = getLocalStorage("cart");
 
-    const productListEl = document.querySelector(".product-list");
+    const productListEl = document.querySelector("#cart-items");
+
     // Clear the existing cart items
     productListEl.innerHTML = "";
 
@@ -27,26 +48,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  function cartItemTemplate(item, index) {
-    return `<li class="cart-card divider">
-        <span data-index="${index}" class="remove-item" style="color: red; cursor: pointer;">X</span>
-        <a href="#" class="cart-card__image">
-            <img 
-            src="${item.Images.PrimaryMedium}" 
-            alt="${item.Name}" 
-            />
-        </a>
-        <a href="#">
-        <h2 class="card__name">${item.Name}</h2>
-        </a>
-        <p class="cart-card__color">${item.Colors[0].ColorName}</p>  
-        <p class="cart-card__quantity">qty: ${item.quantity || 1}</p>
-        <p class="cart-card__price">$${(item.FinalPrice * (item.quantity || 1)).toFixed(2)}</p>
-          
-    </li>`;
-    return newItem;
-  }
-
   function removeItemFromCart(itemIndex) {
     const cartItems = getLocalStorage("cart");
 
@@ -63,13 +64,14 @@ document.addEventListener("DOMContentLoaded", () => {
     showCartTotal();
   }
 
-  // Initial render of cart contents
-  renderCartContents();
-
   function showCartTotal() {
-
-    // const cartItems = document.querySelector("#cart-footer");
     const cartTotal = document.querySelector(".cart-total");
+
+    if (!cartTotal) {
+      console.error("Cart total element not found.");
+      return;
+    }
+
     if (!getLocalStorage("cart")) {
       // hide the total
       cartTotal.classList.add(".cart-footer-hide");
@@ -85,33 +87,31 @@ document.addEventListener("DOMContentLoaded", () => {
       // Get total price using reduce method
       let totalPrice = temp.reduce((prev, next) => prev + next, 0);
 
-      cartTotal.textContent = `Total: $${totalPrice}`;
+      cartTotal.textContent = `Total: $${totalPrice.toFixed(2)}`;
     }
   }
 
+  // Initial render of cart contents
+  renderCartContents();
   showCartTotal();
-
 });
 
-
-
 export default class ShoppingCart {
-
   constructor(key, parentSelector) {
     this.key = key;
     this.parentSelector = parentSelector;
   }
+
   renderCartContents() {
+    debugger;
     const cartItems = getLocalStorage(this.key);
-    const productListEl = document.querySelector(this.parentSelector);
-    // Clear the existing cart items
-    productListEl.innerHTML = "";
+    const productListEl = document.getElementById(this.parentSelector);
+
     // Generate HTML for each cart item, passing the index to cartItemTemplate
-    const htmlItems = cartItems.map((item) =>
-      cardItemTemplate(item),
-    );
-    productListEl.innerHTML = htmlItems.join("");
+    const htmlItems = cartItems.map((item, index) =>
+      cartItemTemplate(item, index)
+    ).join("");
+
+    productListEl.innerHTML = htmlItems;
   }
-
 }
-

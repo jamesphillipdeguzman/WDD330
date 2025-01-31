@@ -8,7 +8,7 @@
 
     <title>Sleep Outside | Checkout</title>
 
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="../css/style.css" />
     <script src="../js/checkout.js" type="module"></script>
   </head>
 
@@ -19,6 +19,69 @@
       <section class="products">
         <h2>Review & Place your Order</h2>
       </section>
+
+      <form action="/submit-checkout" method="POST" id="checkout-form">
+        <!-- Personal Information Section -->
+        <div class="form-section">
+          <div id="personal-info" class="form-group">
+            <h3>Customer Details</h3>
+            <div class="form-data">
+              <label for="firstname">First Name</label>
+              <input type="text" id="firstname" name="firstname" required />
+            </div>
+
+            <div class="form-data">
+              <label for="lastname">Last Name</label>
+              <input type="text" id="lastname" name="lastname" required />
+            </div>
+
+            <div class="form-data">
+              <label for="address">Street Address</label>
+              <input type="text" id="address" required />
+            </div>
+
+            <div class="form-data">
+              <label for="city">City</label>
+              <input type="text" id="city" required />
+            </div>
+
+            <div class="form-data">
+              <label for="state">State</label>
+              <input type="text" id="state" required />
+            </div>
+
+            <div class="form-data">
+              <label for="zipcode">Zip Code</label>
+              <input type="text" id="zipcode" required />
+            </div>
+          </div>
+
+          <div id="payment-info" class="form-group">
+            <h3>Payment</h3>
+            <div class="form-data">
+              <label for="creditcard-number">Credit Cart Number</label>
+              <input type="text" id="creditcard-number" required />
+            </div>
+            <div class="form-data">
+              <label for="expiry-date">Expiration Date</label>
+              <input type="month" id="expiry-date" required />
+            </div>
+            <div class="form-data">
+              <label for="security-code">Security Code</label>
+              <input type="text" id="security-code" required />
+            </div>
+            <button id="btn-checkout" class="checkout-button">Checkout</button>
+          </div>
+
+          <div id="order-summary" class="form-group">
+            <h3>Order Summary</h3>
+            <p><span id="subtotal">0.00</span></p>
+            <p><span id="shipping-estimate">0.00</span></p>
+            <p><span id="tax">0.00</span></p>
+            <p><span id="order-total">$0.00</span></p>
+          </div>
+        </div>
+      </form>
     </main>
 
     <footer id="main-footer"></footer>

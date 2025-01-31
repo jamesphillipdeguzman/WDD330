@@ -19,20 +19,20 @@ export default defineConfig({
   // Ensure Vite supports .mjs and .jsx files
   resolve: {
     alias: {
-      '@': resolve(__dirname, 'src'), // Optional alias for cleaner imports
+      "@": resolve(__dirname, "src"), // Optional alias for cleaner imports
     },
   },
 
   server: {
     hmr: {
-      overlay: false,  // Optional: Disable HMR error overlay if it's blocking you
+      overlay: false, // Optional: Disable HMR error overlay if it's blocking you
     },
   },
 
   // This plugin enables .mjs and JSX support (if needed)
   esbuild: {
-    jsxFactory: 'React.createElement', // Needed if you use React JSX
-    jsxFragment: 'React.Fragment', // Needed if you use React JSX
-    loader: 'jsx', // Allows JSX in .js files
+    jsxFactory: "React.createElement", // Needed if you use React JSX
+    jsxFragment: "React.Fragment", // Needed if you use React JSX
+    loader: "jsx", // Allows JSX in .js files
   },
 });

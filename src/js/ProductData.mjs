@@ -4,9 +4,12 @@
 // - Vite uses the VITE_SERVER_URL environment variable to inject the actual server URL
 // into the code, as declared in Netlify.
 
-
 const baseURL = import.meta.env.VITE_SERVER_URL;
 // const baseURL = "/json/";
+
+//const baseURL = "https://wdd330-backend.onrender.com/";
+
+
 function convertToJson(res) {
   if (res.ok) {
     return res.json();
