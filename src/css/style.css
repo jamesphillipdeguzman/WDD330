@@ -477,3 +477,44 @@ select:focus {
 }
 
 /* End form checkout styles */
+
+/* Comments */
+
+.comments-section {
+  margin-top: 20px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+#comments-list {
+  list-style: none;
+  padding: 0;
+}
+
+#comments-list li {
+  padding: 5px;
+  border-bottom: 1px solid #ddd;
+}
+
+#comment-input {
+  width: 100%;
+  padding: 8px;
+  margin-top: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+#submit-comment {
+  margin-top: 10px;
+  padding: 8px 12px;
+  background-color: #525b0f;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+#submit-comment:hover {
+  background-color: #525b0f;
+}
