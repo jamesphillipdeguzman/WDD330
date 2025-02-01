@@ -2,7 +2,7 @@
 // - This file is not being called by any module and is intended for testing purposes only.
 
 import { getParams, loadHeaderFooter } from "./utils.mjs";
-import ProductData from "./ProductData.mjs";
+import ExternalServices from "./ExternalServices.mjs";
 import ProductDetails from "./ProductDetails.mjs"; // Corrected the import to match the class name
 document.addEventListener("DOMContentLoaded", () => {
   loadHeaderFooter();
@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const productId = getParams("product");
 
     // Get the product category and assign it to dataSource
-    const dataSource = new ProductData("tents");
+    const dataSource = new ExternalServices("tents");
 
     // Create a product instance with the productId and dataSource, then initialize it
     const product = new ProductDetails(productId, dataSource);
