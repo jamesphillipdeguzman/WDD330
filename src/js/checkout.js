@@ -1,5 +1,13 @@
-import { loadHeaderFooter } from "./utils.mjs";
+import { loadHeaderFooter, showCartTotal, getLocalStorage } from "./utils.mjs";
+import CheckoutProcess from "./CheckoutProcess.mjs";
 
-document.addEventListener("DOMContentLoaded", () => {
-  loadHeaderFooter();
-});
+loadHeaderFooter();
+debugger;
+const subTotal = document.querySelector("#subtotal");
+const itemSummary = document.querySelector("#item-summary");
+subTotal.textContent = showCartTotal();
+
+const cart = getLocalStorage("cart");
+const checkoutItemSummary = new CheckoutProcess(cart, itemSummary);
+checkoutItemSummary.init();
+console.log(checkoutItemSummary);

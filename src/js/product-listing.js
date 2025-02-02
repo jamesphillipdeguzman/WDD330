@@ -17,9 +17,12 @@ document.addEventListener("DOMContentLoaded", () => {
   // Load the category title
   const categoryTitle = document.querySelector(".title");
   if (categoryTitle) {
-    categoryTitle.textContent = categoryTitle.textContent + " - " + category.charAt(0).toUpperCase() + category.slice(1);
+    categoryTitle.textContent =
+      categoryTitle.textContent +
+      " - " +
+      category.charAt(0).toUpperCase() +
+      category.slice(1);
   } else {
     return;
   }
-
 });

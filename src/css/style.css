@@ -85,7 +85,7 @@ header {
   margin-top: -1.3em;
 }
 
-.logo--square>div {
+.logo--square > div {
   margin-top: -1.7em;
 }
 
@@ -291,7 +291,6 @@ button {
 
 /* End products styles */
 
-
 footer {
   font-size: var(--small-font);
   padding: 1em;
@@ -429,22 +428,17 @@ select:focus {
 
 /* End form checkout styles */
 
-
-
-@media screen and (min-width: 500px) {
+@media screen and (min-width: 900px) {
   .product-list {
     justify-content: space-around;
-
   }
 
   .product-card {
     flex: 1 1 45%;
-
   }
 }
 
-
-@media screen and (max-width: 1100px) {
+@media screen and (max-width: 1000px) {
   body {
     max-width: 1080px;
     margin: auto;

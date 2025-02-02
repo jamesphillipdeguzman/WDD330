@@ -103,4 +103,20 @@ export function renderWithTemplate(template, parentElement, clear, data, callbac
 //     cart.style.zIndex = '1000'; // Ensure it's above other content
 //   }
 // }
+export function showCartTotal() {
 
+  const cart = getLocalStorage("cart");
+
+  if (!cart) {
+    return "$0.00"; // Return $0.00 if cart is empty
+
+  }
+  // Calculate total by multiplying price by quantity for each item
+  const totalPrice = cart.reduce((total, item) => {
+    const itemPrice = item.FinalPrice * item.quantity;
+    return total + itemPrice;
+  }, 0);
+
+  return `$${totalPrice.toFixed(2)}`;
+
+}
