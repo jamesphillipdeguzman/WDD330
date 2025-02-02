@@ -1,30 +1,33 @@
 <!doctype html>
 
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+  <meta charset="UTF-8" />
 
-    <title>Sleep Outside | Checkout</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link rel="stylesheet" href="../css/style.css" />
-    <script src="../js/checkout.js" type="module"></script>
-  </head>
+  <title>Sleep Outside | Checkout</title>
 
-  <body>
-    <header class="divider" id="main-header"></header>
+  <link rel="stylesheet" href="../css/style.css" />
+  <script src="../js/checkout.js" type="module"></script>
+</head>
 
-    <main class="divider">
-      <section class="products">
-        <h2>Review & Place your Order</h2>
-      </section>
+<body>
+  <header class="divider" id="main-header"></header>
 
-      <form action="/submit-checkout" method="POST" id="checkout-form">
-        <!-- Personal Information Section -->
+  <main class="divider">
+    <section class="products">
+      <h2>Review & Place your Order</h2>
+    </section>
+
+    <form action="/submit-checkout" method="POST" id="checkout-form" name="checkout">
+      <!-- Personal Information Section -->
+      <fieldset>
+        <legend>Shipping</legend>
         <div class="form-section">
           <div id="personal-info" class="form-group">
-            <h3>Customer Details</h3>
+            <!-- <h3>Customer Details</h3> -->
             <div class="form-data">
               <label for="firstname">First Name</label>
               <input type="text" id="firstname" name="firstname" required />
@@ -55,9 +58,13 @@
               <input type="text" id="zipcode" required />
             </div>
           </div>
-
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend>Payment</legend>
+        <div class="form-section">
           <div id="payment-info" class="form-group">
-            <h3>Payment</h3>
+            <!-- <h3>Payment</h3> -->
             <div class="form-data">
               <label for="creditcard-number">Credit Cart Number</label>
               <input type="text" id="creditcard-number" required />
@@ -70,21 +77,41 @@
               <label for="security-code">Security Code</label>
               <input type="text" id="security-code" required />
             </div>
-            <button id="btn-checkout" class="checkout-button">Checkout</button>
-          </div>
 
-          <div id="order-summary" class="form-group">
-            <h3>Order Summary</h3>
-            <p>Item Summary: <span id="item-summary">0</span></p>
-            <p>Sub Total: <span id="subtotal">$0.00</span></p>
-            <p>Shipping Estimate: <span id="shipping-estimate">$0.00</span></p>
-            <p>Tax: <span id="tax">$0.00</span></p>
-            <p>Order Total: <span id="order-total">$0.00</span></p>
           </div>
         </div>
-      </form>
-    </main>
+      </fieldset>
+      <fieldset class="checkout-summary">
+        <legend>Order Summary</legend>
+        <div class="form-section">
+          <div id="order-summary" class="form-group">
+            <ul>
+              <li>
+                <label for="cartTotal">Item Subtotal(<span id="num-items"></span>)</label>
+                <p name="cartTotal" id="cartTotal"></p>
+              </li>
+              <li>
+                <label for="shipping">Shipping Estimate</label>
+                <p id="shipping"></p>
+              </li>
+              <li>
+                <label for="tax">Tax</label>
+                <p id="tax"></p>
+              </li>
+              <li>
+                <label for="orderTotal"><b>Order Total</b></label>
+                <p id="orderTotal"></p>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </fieldset>
+      </div>
+      <button id="btn-checkout" class="checkout-button">Checkout</button>
+    </form>
+  </main>
 
-    <footer id="main-footer"></footer>
-  </body>
+  <footer id="main-footer"></footer>
+</body>
+
 </html>

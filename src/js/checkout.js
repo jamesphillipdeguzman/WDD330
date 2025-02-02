@@ -1,13 +1,17 @@
-import { loadHeaderFooter, showCartTotal, getLocalStorage } from "./utils.mjs";
+import { loadHeaderFooter } from "./utils.mjs";
 import CheckoutProcess from "./CheckoutProcess.mjs";
 
 loadHeaderFooter();
-debugger;
-const subTotal = document.querySelector("#subtotal");
-const itemSummary = document.querySelector("#item-summary");
-subTotal.textContent = showCartTotal();
 
-const cart = getLocalStorage("cart");
-const checkoutItemSummary = new CheckoutProcess(cart, itemSummary);
-checkoutItemSummary.init();
-console.log(checkoutItemSummary);
+const myCheckout = new CheckoutProcess("cart", ".checkout-summary");
+myCheckout.init();
+
+document
+  .querySelector("#zip")
+  .addEventListener("blur", myCheckout.calculateOrdertotal.bind(myCheckout));
+// listening for click on the button
+document.querySelector("#checkoutSubmit").addEventListener("click", (e) => {
+  e.preventDefault();
+
+  myCheckout.checkout();
+});
