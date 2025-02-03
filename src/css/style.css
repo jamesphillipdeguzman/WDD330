@@ -431,6 +431,32 @@ select:focus {
 
 /* End form checkout styles */
 
+@media all and (max-width: 534px) {
+
+  .product-grid {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+  }
+
+  .product-list {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    list-style-type: none;
+    padding: 0;
+  }
+
+  .logo--square {
+    opacity: 0;
+  }
+
+  .mission p {
+    font-size: small;
+  }
+}
+
 @media screen and (min-width: 900px) {
   .product-list {
     justify-content: space-around;
