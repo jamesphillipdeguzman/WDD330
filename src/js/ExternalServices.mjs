@@ -1,4 +1,6 @@
-const baseURL = "http://server-nodejs.cit.byui.edu:3000/";
+// const baseURL = "http://server-nodejs.cit.byui.edu:3000/";
+
+const baseURL = "http://wdd330-backend.onrender.com/checkout";
 
 function convertToJson(res) {
     if (res.ok) {

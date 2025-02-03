@@ -440,6 +440,12 @@ select:focus {
     justify-content: center;
   }
 
+  .products h1,
+  .title {
+    font-size: 1.2rem;
+    text-align: center;
+  }
+
   .product-list {
     display: flex;
     flex-flow: row wrap;
