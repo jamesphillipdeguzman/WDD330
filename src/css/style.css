@@ -88,7 +88,7 @@ header {
   margin-top: -1.3em;
 }
 
-.logo--square>div {
+.logo--square > div {
   margin-top: -1.7em;
 }
 
@@ -299,6 +299,18 @@ footer {
   padding: 1em;
 }
 
+.alert {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: firebrick;
+  color: white;
+  padding: 15px 25px;
+  border-radius: 5px;
+  z-index: 1000;
+  animation: fadeInOut 2s ease-in-out;
+}
+
 .popup-message {
   position: fixed;
   top: 20px;
@@ -358,6 +370,29 @@ footer {
 
 .checkout {
   margin-bottom: 2rem;
+}
+
+.hide {
+  display: none;
+}
+
+.show {
+  display: block;
+}
+
+.thankyou h1 {
+  text-align: center;
+}
+
+.shopping-success {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.shopping-success img {
+  height: 100px;
+  width: 100px;
 }
 
 /* Start form checkout styles */
@@ -432,7 +467,6 @@ select:focus {
 /* End form checkout styles */
 
 @media all and (max-width: 534px) {
-
   .product-grid {
     display: flex;
     flex-direction: column;
@@ -460,6 +494,11 @@ select:focus {
 
   .mission p {
     font-size: small;
+  }
+
+  .shopping-success img {
+    height: 50px;
+    width: 50px;
   }
 }
 

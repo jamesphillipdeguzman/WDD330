@@ -9,7 +9,9 @@ const baseURL = import.meta.env.VITE_SERVER_URL;
 
 //const baseURL = "https://wdd330-backend.onrender.com/";
 // const baseURL = "http://wdd330-backend.onrender.com/checkout";
+// const proxyURL = "https://cors-anywhere.herokuapp.com/";
 
+// const url = proxyURL + baseURL;
 
 // function convertToJson(res) {
 //   if (res.ok) {

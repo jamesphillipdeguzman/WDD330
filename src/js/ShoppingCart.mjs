@@ -105,6 +105,16 @@ export default class ShoppingCart {
   renderCartContents() {
     debugger;
     const cartItems = getLocalStorage(this.key);
+    const checkoutBtn = document.querySelector("#checkout-btn");
+    const cartTotal = document.querySelector(".cart-total");
+
+    if (cartItems.length > 0) {
+      checkoutBtn.classList.add("show");
+      cartTotal.classList.add("show");
+    } else {
+      checkoutBtn.classList.add("hide");
+      cartTotal.classList.add("hide");
+    }
     const productListEl = document.getElementById(this.parentSelector);
 
     // Generate HTML for each cart item, passing the index to cartItemTemplate
