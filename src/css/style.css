@@ -57,6 +57,9 @@ header {
 
 .hero {
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .hero .logo {
@@ -85,7 +88,7 @@ header {
   margin-top: -1.3em;
 }
 
-.logo--square > div {
+.logo--square>div {
   margin-top: -1.7em;
 }
 
