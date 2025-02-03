@@ -1,4 +1,4 @@
-import { getLocalStorage } from './utils.js';
+// import { getLocalStorage } from './utils.js';
 
 export default class CheckoutProcess {
     constructor(key, outputSelector) {
