@@ -88,7 +88,7 @@ header {
   margin-top: -1.3em;
 }
 
-.logo--square>div {
+.logo--square > div {
   margin-top: -1.7em;
 }
 
@@ -110,7 +110,6 @@ button {
 
 .divider {
   border-bottom: 2px solid var(--primary-color);
-
 }
 
 /* End utility classes */
@@ -480,13 +479,11 @@ select:focus {
   width: 100%;
   margin: auto;
   overflow: hidden;
-
 }
 
 .slider .product-card {
   width: 100%;
   display: none;
-
 }
 
 .product-card.displaySlide {
@@ -505,9 +502,7 @@ select:focus {
   cursor: pointer;
   color: white;
   border: none;
-
 }
-
 
 .previous-slide {
   left: 0;
@@ -525,10 +520,7 @@ select:focus {
 .previous-slide:hover,
 .next-slide:hover {
   background-color: rgba(0, 0, 0, 1);
-
 }
-
-
 
 @keyframes anim {
   0% {
@@ -541,12 +533,10 @@ select:focus {
     transform: scale(0.5);
   } */
 
-
   100% {
     opacity: 1;
     transform: scale(1);
   }
-
 }
 
 .alert-close {

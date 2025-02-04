@@ -1,36 +1,31 @@
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sleep Outside | Product Listing</title>
+    <link rel="stylesheet" href="../css/style.css" />
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sleep Outside | Product Listing</title>
-  <link rel="stylesheet" href="../css/style.css" />
+    <script src="../js/product-listing.js" type="module"></script>
+  </head>
 
-  <script src="../js/product-listing.js" type="module"></script>
-</head>
+  <body>
+    <header class="divider" id="main-header"></header>
+    <main class="divider">
+      <section class="products">
+        <h1>Top Products <span class="title"></span></h1>
 
-<body>
-  <header class="divider" id="main-header"></header>
-  <main class="divider">
-    <section class="products">
-      <h1>Top Products <span class="title"></span></h1>
+        <div class="slider">
+          <div class="slides">
+            <ul class="product-list" id="product-list">
+              <!-- Insert the products dynamically here -->
+            </ul>
+          </div>
 
-      <div class="slider">
-        <div class="slides">
-          <ul class="product-list" id="product-list">
-            <!-- Insert the products dynamically here -->
-          </ul>
-
+          <button id="prev" class="previous-slide">&#10094;</button>
+          <button id="next" class="next-slide">&#10095;</button>
         </div>
-
-        <button id="prev" class="previous-slide">&#10094;</button>
-        <button id="next" class="next-slide">&#10095;</button>
-
-      </div>
-
-    </section>
-  </main>
-  <footer id="main-footer"></footer>
-</body>
-
+      </section>
+    </main>
+    <footer id="main-footer"></footer>
+  </body>
 </html>
