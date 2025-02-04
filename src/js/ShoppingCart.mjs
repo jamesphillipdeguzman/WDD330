@@ -44,6 +44,16 @@ document.addEventListener("DOMContentLoaded", () => {
       button.addEventListener("click", function () {
         const itemIndex = this.dataset.index; // Get the index from the data-index attribute
         removeItemFromCart(itemIndex); // Remove the item from the cart
+        // Hide checkout button and cart total
+        const cart = getLocalStorage("cart");
+        if (cart.length === 0) {
+          const cartTotal = document.querySelector(".cart-total");
+          const checkoutBtn = document.querySelector(".checkout");
+          cartTotal.classList.remove("show");
+          checkoutBtn.classList.remove("show");
+        }
+
+
       });
     });
   }
@@ -112,8 +122,8 @@ export default class ShoppingCart {
       checkoutBtn.classList.add("show");
       cartTotal.classList.add("show");
     } else {
-      checkoutBtn.classList.add("hide");
-      cartTotal.classList.add("hide");
+      checkoutBtn.classList.remove("show");
+      cartTotal.classList.remove("show");
     }
     const productListEl = document.getElementById(this.parentSelector);
 

@@ -4,7 +4,7 @@
 // - Includes the init function to render the product list.
 
 
-import { renderListWithTemplate } from "./utils.mjs";
+import { renderListWithTemplate, loadCarouselSlider } from "./utils.mjs";
 
 //Filter unique product names
 function filteredProducts(products) {
@@ -20,14 +20,15 @@ function productCardTemplate(product) {
     return `<li class="product-card">
       <a href="/product-pages/index.html?product=${product.Id}"> 
         <img 
-            src="${product.Images.PrimaryMedium}" 
+            class="slide"
+            src="${product.Images.PrimaryLarge}" 
             alt="Image of ${product.Name}"
         />
         <h3 class="card__brand">${product.Brand.Name}</h3>
         <h2 class="card__name">${product.Name}</h2>
         <p class="product-card__price">$${product.FinalPrice}</p>
       </a>
-    </li>`
+    </li>`;
 }
 
 export default class ProductList {
@@ -42,11 +43,16 @@ export default class ProductList {
         debugger;
         const productList = await this.dataSource.getData(this.category);
 
+
+
         // List only those products with valid images
         const filteredList = filteredProducts(productList);
         // Render list of products here...
         this.renderList(filteredList);
         // this.renderList(productList);
+        // Product carousel starts here...
+        loadCarouselSlider(filteredList);
+
         // Set the title of the page to the category
         if (document.title === null || document.title === "" || document.title === "Sleep Outside | Home") {
             return

@@ -158,3 +158,84 @@ export function getFormValidationErrors(form) {
   }
   return `Invalid fields: ${invalidFields.join(", ")}`;
 }
+
+export function loadCarouselSlider(data) {
+
+  debugger;
+  console.log(data);
+  const slides = document.querySelectorAll(".product-card");
+  let slideIndex = 0;
+  let intervalId = null;
+
+  function initializeSlider() {
+    // debugger;
+    slides[slideIndex].classList.add("displaySlide");
+    intervalId = setInterval(nextSlide, 5000);
+  }
+
+  function showSlide(index) {
+    // debugger;
+
+    console.log("slideIndex: ", index);
+    console.log("slidesLength: ", slides.length);
+
+    if (index >= slides.length) {
+      // Loop back to the first slide
+      slideIndex = 0;
+
+    } else if (index < 0) {
+      // Go to the last slide
+      slideIndex = slides.length - 1;
+    } else {
+      slideIndex = index; // Valid index within bounds
+    }
+
+    // First, hide the slides
+    slides.forEach(slide => {
+      slide.classList.remove("displaySlide");
+    });
+    // Add the displaySlide class to the active slide
+    slides[slideIndex].classList.add("displaySlide");
+
+
+  }
+  console.log("Slides", slides);
+
+
+  // Function to go to the previous slide
+  function prevSlide() {
+
+    // Move to the previous slide
+    slideIndex--;
+    showSlide(slideIndex);
+  }
+
+  // Function to go to the next slide
+  function nextSlide() {
+
+    // Move to the next slide
+    slideIndex++;
+    showSlide(slideIndex);
+
+  }
+
+  const prevBtn = document.querySelector("#prev");
+  const nextBtn = document.querySelector("#next");
+
+  if (prevBtn) {
+    prevBtn.addEventListener("click", () => {
+      // Show previous slide, when clicked
+      prevSlide();
+    });
+  }
+
+  if (nextBtn) {
+    nextBtn.addEventListener("click", () => {
+      // Show next slide, when clicked
+      nextSlide();
+
+    });
+  }
+
+  initializeSlider();
+}

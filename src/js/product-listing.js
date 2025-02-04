@@ -13,7 +13,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const element = document.querySelector(".product-list");
   const listing = new ProductList(category, dataSource, element);
   // console.log(listing);
+  debugger;
   listing.init();
+
   // Load the category title
   const categoryTitle = document.querySelector(".title");
   if (categoryTitle) {

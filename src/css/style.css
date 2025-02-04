@@ -88,7 +88,7 @@ header {
   margin-top: -1.3em;
 }
 
-.logo--square > div {
+.logo--square>div {
   margin-top: -1.7em;
 }
 
@@ -110,6 +110,7 @@ button {
 
 .divider {
   border-bottom: 2px solid var(--primary-color);
+
 }
 
 /* End utility classes */
@@ -225,10 +226,12 @@ button {
 /* Start cart list card styles */
 .cart-card {
   display: grid;
-  grid-template-columns: 25% auto 15%;
+  grid-template-columns: 20% auto 15%;
   font-size: var(--small-font);
   /* max-height: 120px; */
   align-items: center;
+  justify-content: space-around;
+  margin: 10px;
 }
 
 .cart-card__image {
@@ -368,12 +371,14 @@ footer {
   margin-top: 1em;
 }
 
-.checkout {
+.checkout,
+.cart-total {
   margin-bottom: 2rem;
+  display: none;
 }
 
-.hide {
-  display: none;
+.checkout-button {
+  margin: 2rem auto;
 }
 
 .show {
@@ -465,6 +470,97 @@ select:focus {
 }
 
 /* End form checkout styles */
+
+/* Start carousel slider styles */
+
+.slider {
+  display: flex;
+  justify-content: space-evenly;
+  /* position: relative; */
+  width: 100%;
+  margin: auto;
+  overflow: hidden;
+
+}
+
+.slider .product-card {
+  width: 100%;
+  display: none;
+
+}
+
+.product-card.displaySlide {
+  display: block;
+  animation-name: anim;
+  animation-duration: 1s;
+  animation-timing-function: ease-in-out;
+}
+
+.slider button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.5rem;
+  background-color: rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+  color: white;
+  border: none;
+
+}
+
+
+.previous-slide {
+  left: 0;
+}
+
+.next-slide {
+  right: 0;
+}
+
+.previous-slide,
+.next-slide {
+  margin: 0 auto;
+}
+
+.previous-slide:hover,
+.next-slide:hover {
+  background-color: rgba(0, 0, 0, 1);
+
+}
+
+
+
+@keyframes anim {
+  0% {
+    opacity: 0.8;
+    transform: scale(0.99);
+  }
+
+  /* 100% {
+    opacity: 0.5;
+    transform: scale(0.5);
+  } */
+
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+}
+
+.alert-close {
+  font-size: 1.5rem;
+  position: absolute;
+  top: 1px;
+  right: 8px;
+}
+
+.alert-message {
+  font-size: small;
+}
+
+/* End carousel slider styles */
 
 @media all and (max-width: 534px) {
   .product-grid {
