@@ -33,7 +33,7 @@ export default class CheckoutProcess {
 
             // calculate the total of all items in the cart
             this.itemTotal = this.list.reduce((total, item) => {
-                return total + item.price;
+                return total + (item.price * item.quantity);
             }, 0);
             summaryEl.innerText = "$" + this.itemTotal.toFixed(2);
 
